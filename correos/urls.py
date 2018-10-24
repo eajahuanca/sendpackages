@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 from modulos.seguridad import urls as urls_seguridad
+from modulos.envios import urls as urls_envios
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('seguridad/', include(urls_seguridad)),
+    path('envios/', include(urls_envios)),
 ]

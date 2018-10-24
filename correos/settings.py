@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'modulos.seguridad',
+    'modulos.envios',
 ]
 
 MIDDLEWARE = [
