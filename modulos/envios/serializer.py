@@ -25,9 +25,7 @@ class PaisSerializer(serializers.ModelSerializer):
 class DepartamentoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Departamento
-        fields = (
-            #completar campos
-        )
+        fields = '__all__'
 
 
 class CargoSerializer(serializers.ModelSerializer):
@@ -46,10 +44,13 @@ class OficinaSerializer(serializers.ModelSerializer):
         )
 
 class EnvioSerializer(serializers.ModelSerializer):
-    pais = PaisSerializer
-    departamento = DepartamentoSerializer
+    pais = PaisSerializer(many=True, read_only=True)
+    pais_rem_id=serializers.IntegerField(write_only=True)
+    pais_des_id=serializers.IntegerField(write_only=True)
+    departamento = DepartamentoSerializer(many=True, read_only=True)
+    departamento_rem_id=serializers.IntegerField(write_only=True)
+    departamento_des_id=serializers.IntegerField(write_only=True)
     class Meta:
         model = Envio
-        fields = (
-            """Completar campos"""
-        )
+        fields = '__all__'
+        extra_fields = ['pais_rem_id_id', 'pais_des_id_id', 'departamento_rem_id_id', 'departamento_des_id_id']

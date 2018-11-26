@@ -51,4 +51,63 @@ class Oficina (LogModel):
 
 
 class Envio (LogModel):
-    pass
+    documento_identidad_rem=models.CharField(_('Documento Identidad Remitente'), max_length=15, blank=True, null=True)
+    nombre_rem=models.CharField(_('Nombre del remitente'), max_length=50, blank=True, null=True)
+    empresa_rem=models.CharField(_('Nombre de la empresa'), max_length=50, blank=True, null=True)
+    pais_rem_id=models.ForeignKey(
+        'Pais',
+        verbose_name=_('Pais ID Remitente'),
+        related_name='+',
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True
+    )
+    departamento_rem_id=models.ForeignKey(
+        'Departamento',
+        verbose_name=_('Departamento ID Remintente'),
+        related_name='+',
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True
+    )
+    ciudad_rem=models.CharField(_('Ciudad del remitente'), max_length=50, blank=True, null=True)
+    direccion_rem=models.CharField(_('Direccion del remitente'), max_length=80, blank=True, null=True)
+    direccion2_rem=models.CharField(_('Direccion 2 del remitente'), max_length=80, blank=True, null=True)
+    direccion3_rem=models.CharField(_('Direccion 3 del remitente'), max_length=80, blank=True, null=True)
+    codigo_postal_rem=models.CharField(_('Codigo Postal remitente'),max_length=10, blank=True, null=True)
+    email_rem=models.CharField(_('Correo electronico del remitente'), max_length=50, blank=True, null=True)
+    tipo_tel_rem=models.CharField(_('tipo de telefono del remitente'), max_length=50, blank=True, null=True)
+    codigo_pais_rem=models.CharField(_('Codigo Pais Remitente'), max_length=10, blank=True, null=True)
+    telefono_rem=models.CharField(_('Telefono del remitente'), max_length=50, blank=True, null=True)
+    extension_rem=models.CharField(_('Extension del remitente'), max_length=50, blank=True, null=True)
+    nombre_des=models.CharField(_('Nombre del Destinatario'), max_length=50, blank=True, null=True)
+    empresa_des=models.CharField(_('Nombre de la empresa del destinatario'), max_length=50, blank=True, null=True)
+    pais_des_id=models.ForeignKey(
+        'Pais',
+        verbose_name=_('Pais ID Destinatario'),
+        related_name='+',
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True
+    )
+    email_des=models.CharField(_('Correo electronico del destinatario'), max_length=50, blank=True, null=True)
+    departamento_des_id=models.ForeignKey(
+        'Departamento',
+        verbose_name=_('Departamento ID Destinatario'),
+        related_name='+',
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True
+    )
+    ciudad_des=models.CharField(_('Ciudad del destinatario'), max_length=50, blank=True, null=True)
+    direccion_des=models.CharField(_('Direccion del destinatario'), max_length=50, blank=True, null=True)
+    direccion2_des=models.CharField(_('Direccion 2 del destinatario'), max_length=50, blank=True, null=True)
+    direccion3_des=models.CharField(_('Direccion 3 del destinatario'), max_length=50, blank=True, null=True)
+    codigo_postal_des_id=models.CharField(_('Codigo Postal destinatario'),max_length=10, blank=True, null=True)
+    tipo_tel_des=models.CharField(_('Tipo de telefono del destinatario'), max_length=50, blank=True, null=True)
+    codigo_pais_des_id=models.CharField(_('Codigo Pais Destinatario'), max_length=10, blank=True, null=True)
+    telefono_des=models.CharField(_('Telefono del destinatario'), max_length=50, blank=True, null=True)
+    notas_des=models.CharField(_('Notas u observaciones del destinatario'), max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return self.nombre_rem
